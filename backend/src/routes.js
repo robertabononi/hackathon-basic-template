@@ -9,6 +9,7 @@ import { Router } from "express";
 
 // Controllers
 import materialController from "./app/controllers/MaterialController";
+import userController from "./app/controllers/UserController";
 
 const routes = new Router();
 
@@ -19,9 +20,14 @@ const routes = new Router();
  * Buscar coisas no banco GET (consultas)
  * Alterar coisas que foram cadastradas anteriormente(pelo POST), usar PUT
  */
-routes.post("/material", materialController.store);
+routes.post("/material", materialController.create);
 routes.get("/material", materialController.find);
 routes.put("/material/:id", materialController.update);
 routes.delete("/material/:id", materialController.delete);
+
+routes.post("/user", userController.create);
+routes.get("/user", userController.find);
+routes.put("/user/:id", userController.update);
+routes.delete("/user/:id", userController.delete);
 
 export default routes;

@@ -17,7 +17,7 @@ class MaterialController {
             })
         }
     }
-    async store(req, res) {
+    async create(req, res) {
         try{
             if(!req.body.title || !req.body.amount){
                 return res.status(400).json({
@@ -43,7 +43,7 @@ class MaterialController {
                 })
             }
 
-            const updatedMaterial = await MaterialModel.findOneAndUpdate({ _id: req.params.id },{ title : req.body.title, amount: req.body.amount });
+            const updatedMaterial = await MaterialModel.findOneAndUpdate({ _id: req.params.id },{ title : req.body.title, amount: req.body.amount }, { new: true });
             return res.json(updatedMaterial);
         }catch(error){
             return res.status(500).json({
