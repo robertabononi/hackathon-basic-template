@@ -1,9 +1,9 @@
-import bcrypt from "bcryptjs";
 import { model, Schema } from "mongoose";
+//import ChildSchema from "./Child"
 
 const UserSchema = new Schema(
     {
-        username: {
+        email: {
             type: String,
             unique: true,
             required: true,
@@ -12,20 +12,17 @@ const UserSchema = new Schema(
             type: String,
             required: true,
         },
+        name: {
+            type: String,
+            required: true,
+        },
+        userType: {
+            type: String,
+            required: true,
+        },
+        children: [{ type: Schema.Types.ObjectId, ref: 'Child' }] 
     },
     { timestamps: true }
 );
-
-UserSchema.methods = {
-    checkPassword(password) {
-        return bcrypt.compare(password, this.password);
-    },
-};
-
-UserSchema.pre("save", async function generatePasswordHash(next) {
-    // hash the password using our new salt
-    this.password = await bcrypt.hash(this.password, 8);
-    next();
-});
 
 export default model("User", UserSchema);
