@@ -50,8 +50,8 @@ class UserController {
 
     async delete(req, res) {
         try{
-            const updatedUser = await UserModel.findByIdAndDelete({ _id: req.params.id });
-            return res.json(updatedUser);
+            const deletedUser = await UserModel.findByIdAndDelete({ _id: req.params.id });
+            return res.json(deletedUser);
         }
         catch(error){
             console.log("error", error)

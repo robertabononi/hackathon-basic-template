@@ -10,6 +10,8 @@ import { Router } from "express";
 // Controllers
 import materialController from "./app/controllers/MaterialController";
 import userController from "./app/controllers/UserController";
+import childController from "./app/controllers/ChildController";
+import router from "express/lib/router";
 
 const routes = new Router();
 
@@ -29,5 +31,10 @@ routes.post("/user", userController.create);
 routes.get("/user", userController.find);
 routes.put("/user/:id", userController.update);
 routes.delete("/user/:id", userController.delete);
+
+routes.post("/user/:userId/child", childController.create);
+routes.get("/child", childController.find);
+routes.put("/user/:userId/child/:id", childController.update);
+routes.delete("/user/:userId/child/:id", childController.delete);
 
 export default routes;

@@ -10,6 +10,7 @@ const ChildSchema = new Schema(
             type: String,
             required: true,
         },
+        materials: [{ type: Schema.Types.ObjectId, ref: 'Material' }] 
     },
     { timestamps: true }
 );

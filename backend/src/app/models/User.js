@@ -20,10 +20,7 @@ const UserSchema = new Schema(
             type: String,
             required: true,
         },
-        // children: {
-        //     type: [ChildSchema],
-        //     default: []
-        // }
+        children: [{ type: Schema.Types.ObjectId, ref: 'Child' }] 
     },
     { timestamps: true }
 );
