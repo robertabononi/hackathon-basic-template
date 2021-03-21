@@ -1,0 +1,8 @@
+Cada arquivo da pasta "models" representa uma tabela no banco de dados
+É aqui que definimos o que vai ser armazenado no banco de dados e os campos que vão ser armazenados para cada "tabela"
+Por exemplo
+O usuário vai ter
+nome
+email
+senha
+tipoDeUsuario: "RESPONSAVEL" ou tipoDeUsuario: "DOADOR"

@@ -1,30 +1,27 @@
 import { Router } from "express";
 
+/**
+ * Nessa pasta ficam todas as rotas para as funcionalidades do backend. Exemplo
+ * POST /users (cria um usuário)
+ * DELETE /users/${id} (deleta um usuário por id)
+ * GET /users (busca todos os usuários) (pode ter filtros se mandar informações nas querys parameters)
+ */
+
 // Controllers
-import customerController from "@controllers/CustomerController";
-import sessionController from "@controllers/SessionController";
-import userController from "@controllers/UserController";
-// API BASIC MIDDLEWARES
-import authMiddleware from "@middlewares/auth";
-import errorMiddleware from "@middlewares/error";
+import materialController from "./app/controllers/MaterialController";
 
 const routes = new Router();
 
 // Authenticate
-routes.post("/user", userController.store);
-routes.post("/session", sessionController.store);
-
-routes.use(authMiddleware);
-
-// Customers
-routes.get("/customer", customerController.index);
-routes.get("/customer/:id", customerController.find);
-routes.post("/customer", customerController.store);
-
-routes.put("/customer/:id", customerController.update);
-
-routes.delete("/customer/:id", customerController.delete);
-
-routes.use(errorMiddleware);
+/**
+ * Criar coisas POST
+ * Deletar coisas DELETE
+ * Buscar coisas no banco GET (consultas)
+ * Alterar coisas que foram cadastradas anteriormente(pelo POST), usar PUT
+ */
+routes.post("/material", materialController.store);
+routes.get("/material", materialController.find);
+routes.put("/material/:id", materialController.update);
+routes.delete("/material/:id", materialController.delete);
 
 export default routes;
